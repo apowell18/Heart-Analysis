@@ -1,7 +1,8 @@
 ############################
 # Understanding variables
 # sex - Sex of patient (1: Male; 0: Female)
-# cp - Chest pain
+# cp - Chest pain (1: typical angina) (2: atypical angina) 
+# (3: non-anginal pain) (4: asymptomatic)
 # trtbps - Resting blood pressure (mmHg)
 # chol - Cholesterol in mg/dl 
 # fbs - Fasting blood sugar > 120 mg/dl (1 = T; 0 = F)
@@ -9,10 +10,18 @@
 # thalachh - Maximum heart rate achieved
 # exng - Exercise induced angina (1 = Y; 0 = N)
 # oldpeak - Previous peak
+# slp - slope
+# caa - # of major vessels
+# thal - thal rate
+# output - 1 - high risk, 0 - low risk HA
+
 ############################
 # Loading data
 ############################
 heart <- read.csv('~/Documents/Projects/Data Analyst/R/Heart_Analysis/heart.csv')
+
+install.packages("caret", dependencies = TRUE)
+library("caret")
 
 #view the data
 View(heart) 
@@ -66,7 +75,21 @@ plot(heart$age, heart$chol, col = "blue",
 
 #Histogram - Frequency of Chest Pains
 hist(heart$cp)
-hist(heart$cp, col = "green", xlab = "Chest Pains") # makes green bars
+
+# makes green bars + relabel Title(main) & x label
+hist(heart$cp, col = "green", xlab = "Chest Pains", 
+     main = "Histogram of Chest Pains") 
+    
+#Feature plots - creates box plot
+#make sure to install caret
+# convert y-var to a factor, if already a factor just input data$var
+featurePlot(x = heart[,1:13],
+            y = as.factor(heart$cp),
+            plot = "box", 
+            strip = strip.custom(par.strip.text = list(cex=.7)), 
+            scales = list(x = list(relation="free"), 
+                          y = list(relation="free")))
+
 
 
 

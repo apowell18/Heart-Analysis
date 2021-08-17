@@ -1,8 +1,17 @@
 ############################
-# Different ways to load data
+# Understanding variables
+# sex - Sex of patient (1: Male; 0: Female)
+# cp - Chest pain
+# trtbps - Resting blood pressure (mmHg)
+# chol - Cholesterol in mg/dl 
+# fbs - Fasting blood sugar > 120 mg/dl (1 = T; 0 = F)
+# restecg - Resting electrocardiograph results
+# thalachh - Maximum heart rate achieved
+# exng - Exercise induced angina (1 = Y; 0 = N)
+# oldpeak - Previous peak
 ############################
-
-#Method 1
+# Loading data
+############################
 heart <- read.csv('~/Documents/Projects/Data Analyst/R/Heart_Analysis/heart.csv')
 
 #view the data
@@ -47,7 +56,17 @@ plot(heart)
 plot(heart, col="red") #col = color
 
 # Scatter plot
-plot(heart$age, heart$chol)
+# Correlation between Age and Cholesterol 
+plot(heart$chol, heart$age)
+
+plot(heart$age, heart$chol, col = "blue") #change color to blue
+
+plot(heart$age, heart$chol, col = "blue",
+     xlab = "Age", ylab = "Cholesterol") #Color + Label change
+
+#Histogram - Frequency of Chest Pains
+hist(heart$cp)
+hist(heart$cp, col = "green", xlab = "Chest Pains") # makes green bars
 
 
 

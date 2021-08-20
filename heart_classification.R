@@ -62,6 +62,7 @@ print(Model.cv.confusion)
 # Feature Importance
 Importance <- varImp(Model)
 plot(Importance) 
+plot(Importance, col="red")
 ####
 # Chest pains
 # Old peak

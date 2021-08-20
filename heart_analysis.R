@@ -65,9 +65,9 @@ main = "Histogram of Chest Pains")
 #make sure to install caret
 # convert y-var to a factor, if already a factor just input data$var
 featurePlot(x = heart[,1:13],
-y = as.factor(heart$cp),
-plot = "box",
-strip = strip.custom(par.strip.text = list(cex=.7)),
-scales = list(x = list(relation="free"),
-y = list(relation="free")))
+  y = as.factor(heart$cp),
+  plot = "box",
+  strip = strip.custom(par.strip.text = list(cex=.7)),
+  scales = list(x = list(relation="free"),
+  y = list(relation="free")))
 
